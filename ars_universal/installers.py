@@ -107,6 +107,7 @@ def write_manifest(platform: Platform, target: Path, dry_run: bool) -> None:
         "platform": platform.key,
         "platform_label": platform.label,
         "install_kind": platform.install_kind,
+        "status": platform.status,
         "based_on": {
             "name": "academic-research-skills",
             "author": "Cheng-I Wu",

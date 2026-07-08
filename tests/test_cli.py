@@ -26,6 +26,8 @@ class CliTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("codex", result.stdout)
         self.assertIn("Claude Code", result.stdout)
+        self.assertIn("stable", result.stdout)
+        self.assertIn("experimental", result.stdout)
 
     def test_cli_installs_to_target(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

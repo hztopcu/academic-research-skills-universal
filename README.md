@@ -19,6 +19,7 @@ Implemented:
 - Cursor and VS Code instruction adapters
 - Portable bundle fallback for platforms without a formal skill format
 - Attribution manifest written at install time
+- Install verification with `ars <platform> verify`
 
 Not yet guaranteed:
 
@@ -30,18 +31,17 @@ Not yet guaranteed:
 
 | Level | Meaning |
 | --- | --- |
-| Tested adapter | Installer output is covered by automated tests in this repo. |
-| Portable bundle | Installs the skill files and routing notes, but native platform behavior still needs real-world validation. |
-| Planned native adapter | Registry entry exists; deeper platform-native integration should be added before claiming full support. |
+| Stable | Installer output and verification are covered by automated tests in this repo. These are the first platforms targeted for local/manual E2E validation. |
+| Experimental | Installer and verification are available, but the platform is still under testing and may need a native adapter. |
 
 | Platform | Current level |
 | --- | --- |
-| Codex | Tested adapter |
-| Claude Code | Tested adapter |
-| Agent Skills | Tested through portable bundle path |
-| Cursor | Portable bundle + rule file |
-| VS Code Copilot Chat | Portable bundle + instruction file |
-| Aider, Gemini CLI, OpenCode, CodeBuddy, Kilo Code, Copilot CLI, OpenClaw, Factory Droid, Trae, Trae CN, Hermes, Kimi Code, Amp, Kiro, Pi, Devin, Google Antigravity | Portable bundle |
+| Codex | Stable |
+| Claude Code | Stable |
+| VS Code Copilot Chat | Stable |
+| Cursor | Stable |
+| Aider | Stable |
+| Agent Skills, Gemini CLI, OpenCode, CodeBuddy, Kilo Code, Copilot CLI, OpenClaw, Factory Droid, Trae, Trae CN, Hermes, Kimi Code, Amp, Kiro, Pi, Devin, Google Antigravity | Experimental |
 
 Do not describe a platform as "fully supported" until it has a platform-specific adapter and an end-to-end manual test in that environment.
 
@@ -80,28 +80,35 @@ python -m ars_universal.cli codex verify --target ./.codex/skills
 python -m ars_universal.cli agents install --target ./agent-skills/academic-research-skills
 ```
 
-## Platform Commands
+## Stable Platform Commands
 
 | Platform | Command |
 | --- | --- |
 | Claude Code | `ars claude install` |
-| CodeBuddy | `ars codebuddy install` |
 | Codex | `ars codex install` |
-| OpenCode | `ars opencode install` |
-| Kilo Code | `ars kilo install` |
-| GitHub Copilot CLI | `ars copilot install` |
 | VS Code Copilot Chat | `ars vscode install` |
 | Aider | `ars aider install` |
+| Cursor | `ars cursor install` |
+
+## Experimental Platform Commands
+
+These install a portable bundle and are under testing.
+
+| Platform | Command |
+| --- | --- |
+| Agent Skills | `ars agents install` or `ars skills install` |
+| Gemini CLI | `ars gemini install` |
+| OpenCode | `ars opencode install` |
+| CodeBuddy | `ars codebuddy install` |
+| Kilo Code | `ars kilo install` |
+| GitHub Copilot CLI | `ars copilot install` |
 | OpenClaw | `ars claw install` |
 | Factory Droid | `ars droid install` |
 | Trae | `ars trae install` |
 | Trae CN | `ars trae-cn install` |
-| Cursor | `ars cursor install` |
-| Gemini CLI | `ars gemini install` |
 | Hermes | `ars hermes install` |
 | Kimi Code | `ars install --platform kimi` |
 | Amp | `ars amp install` |
-| Agent Skills | `ars agents install` or `ars skills install` |
 | Kiro IDE/CLI | `ars kiro install` |
 | Pi coding agent | `ars pi install` |
 | Devin CLI | `ars devin install` |

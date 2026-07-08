@@ -24,7 +24,7 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.list:
         for key, platform in sorted(PLATFORMS.items()):
-            print(f"{key:12} {platform.label}")
+            print(f"{key:12} {platform.label:24} {platform.status}")
         return 0
 
     platform_name, action = normalize_invocation(args.platform, args.action, args.platform_flag)

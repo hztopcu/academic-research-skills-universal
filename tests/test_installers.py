@@ -40,6 +40,7 @@ class InstallerTests(unittest.TestCase):
 
             manifest = json.loads((target / "ars-universal.json").read_text(encoding="utf-8"))
             self.assertEqual(manifest["platform"], "codex")
+            self.assertEqual(manifest["status"], "stable")
             self.assertEqual(manifest["based_on"]["author"], "Cheng-I Wu")
             self.assertEqual(verify_install(resolve_platform("codex"), target=target), [])
 

@@ -25,6 +25,7 @@ class Platform:
     label: str
     default_subdir: str
     install_kind: str
+    status: str = "experimental"
     aliases: tuple[str, ...] = ()
     notes: tuple[str, ...] = ()
 
@@ -39,6 +40,7 @@ PLATFORMS: dict[str, Platform] = {
         label="Claude Code",
         default_subdir=".claude/skills",
         install_kind="multi-skill",
+        status="stable",
         notes=(
             "Installs the four upstream skills as separate Claude Code skills.",
             "Claude-specific plugin and hook behavior remains upstream-native.",
@@ -49,6 +51,7 @@ PLATFORMS: dict[str, Platform] = {
         label="Codex",
         default_subdir=".codex/skills",
         install_kind="codex-bundle",
+        status="stable",
         notes=(
             "Installs one bundled skill named academic-research-suite with ars-* aliases.",
             "Full multi-agent parity depends on the active Codex runtime capabilities.",
@@ -67,6 +70,7 @@ PLATFORMS: dict[str, Platform] = {
         label="Cursor",
         default_subdir=".cursor/rules/academic-research-skills",
         install_kind="rules-bundle",
+        status="stable",
         notes=("Installs Markdown rules that point Cursor at the bundled skill content.",),
     ),
     "aider": Platform(
@@ -74,6 +78,7 @@ PLATFORMS: dict[str, Platform] = {
         label="Aider",
         default_subdir=".aider/academic-research-skills",
         install_kind="portable-bundle",
+        status="stable",
         notes=("Installs reusable prompts and a recommended include file.",),
     ),
     "gemini": Platform(
@@ -111,6 +116,7 @@ PLATFORMS: dict[str, Platform] = {
         label="VS Code Copilot Chat",
         default_subdir=".vscode/academic-research-skills",
         install_kind="vscode-instructions",
+        status="stable",
     ),
     "claw": Platform(
         key="claw",
