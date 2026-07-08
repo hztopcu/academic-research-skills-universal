@@ -27,8 +27,6 @@ Not yet guaranteed:
 
 ## Install From This Repository
 
-For this first scaffold, run the CLI from the repository checkout or install it editable:
-
 ```bash
 python -m ars_universal.cli --list
 python -m ars_universal.cli codex install
@@ -37,14 +35,14 @@ python -m ars_universal.cli cursor install
 python -m ars_universal.cli install --platform kimi
 ```
 
-Editable install:
+Editable install for development:
 
 ```bash
 python -m pip install -e .
 ars codex install
 ```
 
-Non-editable `pipx install git+...` packaging is planned, but not guaranteed in this first scaffold because the installer needs the bundled skill folders at runtime.
+Regular package installs are supported by bundling the upstream skill assets under `ars_universal/assets/`.
 
 Use `--dry-run` to preview writes:
 
@@ -86,9 +84,17 @@ python -m ars_universal.cli agents install --target ./agent-skills/academic-rese
 | Devin CLI | `ars devin install` |
 | Google Antigravity | `ars antigravity install` |
 
+## Test
+
+```bash
+python -m compileall ars_universal tests
+python -m unittest discover -s tests
+python -m pip install . --target tmp-install/pkg-test --no-deps --no-cache-dir
+```
+
 ## How The Adapters Work
 
-The upstream methodology is kept in four core skill packages:
+The upstream methodology is kept in four bundled skill packages under `ars_universal/assets/`:
 
 - `deep-research`
 - `academic-paper`

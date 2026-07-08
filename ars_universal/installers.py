@@ -7,7 +7,7 @@ import shutil
 from .platforms import Platform, SKILL_DIRS, SUPPORT_DIRS
 
 
-ROOT = Path(__file__).resolve().parent.parent
+ASSET_ROOT = Path(__file__).resolve().parent / "assets"
 
 
 def copy_tree(src: Path, dst: Path, dry_run: bool) -> None:
@@ -51,24 +51,24 @@ def install(platform: Platform, target: Path | None = None, dry_run: bool = Fals
 
 
 def ensure_assets() -> None:
-    missing = [name for name in SKILL_DIRS if not (ROOT / name / "SKILL.md").exists()]
+    missing = [name for name in SKILL_DIRS if not (ASSET_ROOT / name / "SKILL.md").exists()]
     if missing:
         names = ", ".join(missing)
         raise SystemExit(
             "Bundled skill assets are missing: "
-            f"{names}. Run this CLI from the repository checkout or use an editable install."
+            f"{names}. Reinstall the package or run from a complete repository checkout."
         )
 
 
 def install_multi_skill(target: Path, dry_run: bool) -> None:
     for name in SKILL_DIRS:
-        copy_tree(ROOT / name, target / name, dry_run)
+        copy_tree(ASSET_ROOT / name, target / name, dry_run)
     copy_support(target, dry_run)
 
 
 def install_portable_bundle(target: Path, dry_run: bool) -> None:
     for name in SKILL_DIRS:
-        copy_tree(ROOT / name, target / "skills" / name, dry_run)
+        copy_tree(ASSET_ROOT / name, target / "skills" / name, dry_run)
     copy_support(target, dry_run)
     write_text(target / "SKILL.md", portable_skill_md(), dry_run)
 
@@ -76,14 +76,14 @@ def install_portable_bundle(target: Path, dry_run: bool) -> None:
 def install_codex_bundle(target: Path, dry_run: bool) -> None:
     bundle = target / "academic-research-suite"
     for name in SKILL_DIRS:
-        copy_tree(ROOT / name, bundle / "skills" / name, dry_run)
+        copy_tree(ASSET_ROOT / name, bundle / "skills" / name, dry_run)
     copy_support(bundle, dry_run)
     write_text(bundle / "SKILL.md", codex_skill_md(), dry_run)
 
 
 def copy_support(target: Path, dry_run: bool) -> None:
     for name in SUPPORT_DIRS:
-        src = ROOT / name
+        src = ASSET_ROOT / name
         if src.exists():
             copy_tree(src, target / name, dry_run)
 

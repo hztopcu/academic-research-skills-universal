@@ -32,3 +32,7 @@ ars = "ars_universal.cli:main"
 
 [tool.setuptools]
 packages = ["ars_universal"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+ars_universal = ["assets/**/*"]
