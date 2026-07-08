@@ -14,6 +14,8 @@ python tools/smoke_all_platforms.py --all
 
 The smoke script installs each selected platform into an isolated temporary directory and then runs `verify_install`.
 
+CI also checks `validation/platform-validation.json` to ensure every registered platform has an explicit manual validation status.
+
 ## Manual End-to-End
 
 Manual end-to-end validation should be recorded per platform before moving it beyond experimental. Minimum checks:
@@ -23,6 +25,8 @@ Manual end-to-end validation should be recorded per platform before moving it be
 - Ask for a literature review, outline, article draft, citation check, and review pass.
 - Confirm the agent loads the intended skill package and follows the integrity gates.
 - Save the date, platform version, and notes in a release checklist or issue.
+
+See [Validation](VALIDATION.md) for status definitions and the manual E2E checklist.
 
 ## Current Local Smoke
 

@@ -40,3 +40,5 @@ Support levels are intentionally conservative.
 | Google Antigravity | `ars antigravity install` |
 
 Do not call an experimental platform fully supported until it has a platform-specific adapter and manual end-to-end validation in that environment.
+
+Manual validation status is tracked separately in [Validation](VALIDATION.md). A platform can have passing installer smoke tests while still needing real runtime E2E validation.

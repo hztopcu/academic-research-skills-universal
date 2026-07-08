@@ -54,6 +54,7 @@ Do not describe a platform as "fully supported" until it has a platform-specific
 - [Installation](docs/INSTALLATION.md)
 - [Platform support](docs/PLATFORM_SUPPORT.md)
 - [Test matrix](docs/TEST_MATRIX.md)
+- [Validation](docs/VALIDATION.md)
 - [Release checklist](docs/RELEASE_CHECKLIST.md)
 - [GitHub setup](docs/GITHUB_SETUP.md)
 - Platform notes: [Codex](platforms/codex.md), [Claude Code](platforms/claude.md), [VS Code](platforms/vscode.md), [Cursor](platforms/cursor.md), [Aider](platforms/aider.md), [experimental platforms](platforms/experimental.md)

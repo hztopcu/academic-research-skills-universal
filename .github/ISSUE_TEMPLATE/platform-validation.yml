@@ -1,0 +1,70 @@
+name: Platform validation report
+description: Report a manual end-to-end validation run for one platform.
+title: "[Validation] PLATFORM on OS"
+labels:
+  - validation
+  - platform
+body:
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Claude Code
+        - Codex
+        - VS Code Copilot Chat
+        - Cursor
+        - Aider
+        - Agent Skills
+        - Gemini CLI
+        - OpenCode
+        - CodeBuddy
+        - Kilo Code
+        - GitHub Copilot CLI
+        - OpenClaw
+        - Factory Droid
+        - Trae
+        - Trae CN
+        - Hermes
+        - Kimi Code
+        - Amp
+        - Kiro IDE/CLI
+        - Pi coding agent
+        - Devin CLI
+        - Google Antigravity
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Platform version
+      placeholder: "e.g. 2.1.145"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "e.g. Windows 11, macOS 15, Ubuntu 24.04"
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks completed
+      options:
+        - label: Install command completed.
+        - label: Verify command passed.
+        - label: Diagnose command passed.
+        - label: Platform loaded the installed skill, rule, or instruction file.
+        - label: Literature review request worked.
+        - label: Article draft request worked.
+        - label: Citation check request worked.
+        - label: Peer-review request worked.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Include target path, command output excerpts, screenshots, or limitations.
+    validations:
+      required: true

@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-07-08",
+  "maintainer_environment": {
+    "os": "Windows",
+    "notes": "Automated installer smoke passes for all registered platforms. Manual E2E status is tracked separately because many agent runtimes require interactive accounts, GUIs, or vendor-specific environments."
+  },
+  "platforms": {
+    "agents": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no native Agent Skills runtime E2E recorded."
+    },
+    "aider": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "blocked-not-installed",
+      "evidence": "Aider CLI was not detected on the maintainer machine on 2026-07-08."
+    },
+    "amp": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no Amp runtime E2E recorded."
+    },
+    "antigravity": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no Google Antigravity runtime E2E recorded."
+    },
+    "claude": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "environment-detected",
+      "detected_version": "2.1.145 (Claude Code)",
+      "evidence": "Claude Code CLI detected and version command passed. Interactive skill invocation still needs a recorded manual E2E run."
+    },
+    "claw": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no OpenClaw runtime E2E recorded."
+    },
+    "codebuddy": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no CodeBuddy runtime E2E recorded."
+    },
+    "codex": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "partial-local",
+      "evidence": "Codex install, verify, diagnose, and local article-generation smoke passed. The WindowsApps codex.exe version command was blocked by OS access control in the sandbox."
+    },
+    "copilot": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no GitHub Copilot CLI runtime E2E recorded."
+    },
+    "cursor": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "environment-detected",
+      "detected_version": "3.10.11",
+      "evidence": "Cursor CLI detected and version command passed. Rule loading still needs GUI/manual E2E confirmation."
+    },
+    "devin": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no Devin CLI runtime E2E recorded."
+    },
+    "droid": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no Factory Droid runtime E2E recorded."
+    },
+    "gemini": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "blocked-not-installed",
+      "evidence": "Gemini CLI was not detected on the maintainer machine on 2026-07-08."
+    },
+    "hermes": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no Hermes runtime E2E recorded."
+    },
+    "kilo": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no Kilo Code runtime E2E recorded."
+    },
+    "kimi": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no Kimi Code runtime E2E recorded."
+    },
+    "kiro": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no Kiro IDE/CLI runtime E2E recorded."
+    },
+    "opencode": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no OpenCode runtime E2E recorded."
+    },
+    "pi": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no Pi coding agent runtime E2E recorded."
+    },
+    "trae": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no Trae runtime E2E recorded."
+    },
+    "trae-cn": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "pending-external",
+      "evidence": "Portable bundle installs and verifies; no Trae CN runtime E2E recorded."
+    },
+    "vscode": {
+      "automated_install_smoke": "passed",
+      "manual_e2e": "environment-detected",
+      "detected_version": "1.124.2",
+      "evidence": "VS Code CLI detected and version command passed. Copilot Chat instruction loading still needs GUI/manual E2E confirmation."
+    }
+  }
+}
