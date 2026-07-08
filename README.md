@@ -1,5 +1,7 @@
 # Academic Research Skills Universal
 
+[![Tests](https://github.com/hztopcu/academic-research-skills-universal/actions/workflows/tests.yml/badge.svg)](https://github.com/hztopcu/academic-research-skills-universal/actions/workflows/tests.yml)
+
 Unofficial cross-platform installer and adapter layer for [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills).
 
 This project is based on and extends Academic Research Skills by Cheng-I Wu. The goal is to make the research, writing, peer-review, and publication pipeline easier to install across more coding-agent platforms while preserving upstream attribution, methodology, and license terms.
@@ -53,6 +55,7 @@ Do not describe a platform as "fully supported" until it has a platform-specific
 - [Platform support](docs/PLATFORM_SUPPORT.md)
 - [Test matrix](docs/TEST_MATRIX.md)
 - [Release checklist](docs/RELEASE_CHECKLIST.md)
+- [GitHub setup](docs/GITHUB_SETUP.md)
 - Platform notes: [Codex](platforms/codex.md), [Claude Code](platforms/claude.md), [VS Code](platforms/vscode.md), [Cursor](platforms/cursor.md), [Aider](platforms/aider.md), [experimental platforms](platforms/experimental.md)
 
 ## Install From This Repository
