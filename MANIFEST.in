@@ -1,0 +1,10 @@
+recursive-include academic-paper *
+recursive-include academic-paper-reviewer *
+recursive-include academic-pipeline *
+recursive-include deep-research *
+recursive-include shared *
+recursive-include scripts *
+recursive-include commands *
+include README.md
+include NOTICE.md
+include LICENSE

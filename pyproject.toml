@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "academic-research-skills-universal"
+version = "0.1.0"
+description = "Cross-platform installer and adapters for Academic Research Skills."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "CC-BY-NC-4.0" }
+authors = [
+  { name = "Academic Research Skills Universal contributors" }
+]
+keywords = [
+  "academic",
+  "research",
+  "skills",
+  "codex",
+  "claude",
+  "cursor",
+  "aider",
+  "gemini"
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: Free for non-commercial use"
+]
+
+[project.scripts]
+ars = "ars_universal.cli:main"
+
+[tool.setuptools]
+packages = ["ars_universal"]
