@@ -45,6 +45,15 @@ Not yet guaranteed:
 
 Do not describe a platform as "fully supported" until it has a platform-specific adapter and an end-to-end manual test in that environment.
 
+## Documentation
+
+- [Architecture](docs/ARCHITECTURE.md)
+- [Installation](docs/INSTALLATION.md)
+- [Platform support](docs/PLATFORM_SUPPORT.md)
+- [Test matrix](docs/TEST_MATRIX.md)
+- [Release checklist](docs/RELEASE_CHECKLIST.md)
+- Platform notes: [Codex](platforms/codex.md), [Claude Code](platforms/claude.md), [VS Code](platforms/vscode.md), [Cursor](platforms/cursor.md), [Aider](platforms/aider.md), [experimental platforms](platforms/experimental.md)
+
 ## Install From This Repository
 
 ```bash
@@ -124,9 +133,11 @@ ars verify --platform kimi --target ./tmp/kimi
 ## Test
 
 ```bash
-python -m compileall ars_universal tests
+python -m compileall ars_universal tests tools
 python -m unittest discover -s tests
 python -m pip install . --target tmp-install/pkg-test --no-deps --no-cache-dir
+python tools/smoke_all_platforms.py --stable-only
+python tools/smoke_all_platforms.py --all
 python -m ars_universal.cli codex install --target tmp-install/codex
 python -m ars_universal.cli codex verify --target tmp-install/codex
 ```
