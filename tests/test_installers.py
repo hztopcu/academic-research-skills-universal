@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 
 from ars_universal.cli import normalize_invocation
-from ars_universal.installers import install
+from ars_universal.installers import install, verify_install
 from ars_universal.platforms import SKILL_DIRS, resolve_platform
 
 
@@ -32,6 +32,8 @@ class InstallerTests(unittest.TestCase):
 
             bundle = target / "academic-research-suite"
             self.assertTrue((bundle / "SKILL.md").exists())
+            self.assertTrue((bundle / "ARS-INSTALL.md").exists())
+            self.assertTrue((bundle / "ars-command-map.json").exists())
             self.assertTrue((bundle / "commands" / "ars-plan.md").exists())
             for name in SKILL_DIRS:
                 self.assertTrue((bundle / "skills" / name / "SKILL.md").exists())
@@ -39,6 +41,7 @@ class InstallerTests(unittest.TestCase):
             manifest = json.loads((target / "ars-universal.json").read_text(encoding="utf-8"))
             self.assertEqual(manifest["platform"], "codex")
             self.assertEqual(manifest["based_on"]["author"], "Cheng-I Wu")
+            self.assertEqual(verify_install(resolve_platform("codex"), target=target), [])
 
     def test_claude_install_writes_individual_skills(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -48,6 +51,7 @@ class InstallerTests(unittest.TestCase):
             for name in SKILL_DIRS:
                 self.assertTrue((target / name / "SKILL.md").exists())
             self.assertTrue((target / "commands" / "ars-full.md").exists())
+            self.assertEqual(verify_install(resolve_platform("claude"), target=target), [])
 
     def test_portable_install_writes_root_skill(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -60,6 +64,24 @@ class InstallerTests(unittest.TestCase):
 
             manifest = json.loads((target / "ars-universal.json").read_text(encoding="utf-8"))
             self.assertEqual(manifest["platform"], "kimi")
+            self.assertEqual(verify_install(resolve_platform("kimi"), target=target), [])
+
+    def test_verify_reports_missing_install(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            errors = verify_install(resolve_platform("codex"), target=Path(tmp))
+            self.assertTrue(any("missing manifest" in error for error in errors))
+            self.assertTrue(any("missing skill" in error for error in errors))
+
+    def test_command_map_routes_known_commands(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp)
+            install(resolve_platform("codex"), target=target)
+            mapping = json.loads(
+                (target / "academic-research-suite" / "ars-command-map.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(mapping["ars-reviewer"]["recommended_skill"], "academic-paper-reviewer")
+            self.assertEqual(mapping["ars-full"]["recommended_skill"], "academic-pipeline")
+            self.assertEqual(mapping["ars-lit-review"]["recommended_skill"], "deep-research")
 
 
 if __name__ == "__main__":

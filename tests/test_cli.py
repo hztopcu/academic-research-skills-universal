@@ -32,12 +32,20 @@ class CliTests(unittest.TestCase):
             result = self.run_cli("codex", "install", "--target", tmp)
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertTrue((Path(tmp) / "academic-research-suite" / "SKILL.md").exists())
+            self.assertIn("Verification: OK", result.stdout)
+
+            verify = self.run_cli("codex", "verify", "--target", tmp)
+            self.assertEqual(verify.returncode, 0, verify.stderr)
+            self.assertIn("Verification OK", verify.stdout)
 
     def test_platform_flag_form(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             result = self.run_cli("install", "--platform", "kimi", "--target", tmp)
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertTrue((Path(tmp) / "SKILL.md").exists())
+
+            verify = self.run_cli("verify", "--platform", "kimi", "--target", tmp)
+            self.assertEqual(verify.returncode, 0, verify.stderr)
 
 
 if __name__ == "__main__":

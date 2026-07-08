@@ -50,9 +50,11 @@ Do not describe a platform as "fully supported" until it has a platform-specific
 ```bash
 python -m ars_universal.cli --list
 python -m ars_universal.cli codex install
+python -m ars_universal.cli codex verify
 python -m ars_universal.cli claude install
 python -m ars_universal.cli cursor install
 python -m ars_universal.cli install --platform kimi
+python -m ars_universal.cli verify --platform kimi
 ```
 
 Editable install for development:
@@ -74,6 +76,7 @@ Use `--target` for project-local installs:
 
 ```bash
 python -m ars_universal.cli codex install --target ./.codex/skills
+python -m ars_universal.cli codex verify --target ./.codex/skills
 python -m ars_universal.cli agents install --target ./agent-skills/academic-research-skills
 ```
 
@@ -104,12 +107,21 @@ python -m ars_universal.cli agents install --target ./agent-skills/academic-rese
 | Devin CLI | `ars devin install` |
 | Google Antigravity | `ars antigravity install` |
 
+Every install runs verification automatically. You can also verify a target explicitly:
+
+```bash
+ars codex verify --target ./.codex/skills
+ars verify --platform kimi --target ./tmp/kimi
+```
+
 ## Test
 
 ```bash
 python -m compileall ars_universal tests
 python -m unittest discover -s tests
 python -m pip install . --target tmp-install/pkg-test --no-deps --no-cache-dir
+python -m ars_universal.cli codex install --target tmp-install/codex
+python -m ars_universal.cli codex verify --target tmp-install/codex
 ```
 
 ## How The Adapters Work
