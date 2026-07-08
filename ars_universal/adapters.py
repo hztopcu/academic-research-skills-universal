@@ -321,7 +321,7 @@ Use the skill packages under `skills/`:
 
 Start with `academic-pipeline` for an end-to-end research -> write -> review -> revise workflow. Use individual skills when your platform does not support multi-agent orchestration.
 
-Attribution: based on Academic Research Skills by Cheng-I Wu, https://github.com/Imbad0202/academic-research-skills, licensed CC BY-NC 4.0.
+Attribution and license details are recorded in `ars-universal.json` and NOTICE.md.
 """
 
 
@@ -342,7 +342,7 @@ Route requests to the bundled skills in `skills/`:
 
 When the user invokes an `ars-*` alias, load the matching command file from `commands/` and then the appropriate skill package. Preserve the human-in-the-loop checkpoints and integrity gates from the upstream methodology.
 
-Attribution: based on Academic Research Skills by Cheng-I Wu, https://github.com/Imbad0202/academic-research-skills, licensed CC BY-NC 4.0.
+Attribution and license details are recorded in `ars-universal.json` and NOTICE.md.
 """
 
 
@@ -412,7 +412,7 @@ Use this folder as a local instruction bundle for academic research workflows.
 - Paper writing: `skills/academic-paper/SKILL.md`
 - Peer review: `skills/academic-paper-reviewer/SKILL.md`
 
-The bundle is based on Imbad0202/academic-research-skills and remains under CC BY-NC 4.0.
+The bundle is based on the upstream Academic Research Skills project and remains under CC BY-NC 4.0. See NOTICE.md for attribution.
 """,
         dry_run,
     )

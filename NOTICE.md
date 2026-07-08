@@ -18,4 +18,4 @@ Modification summary:
 - Added Cursor and VS Code instruction-oriented adapters.
 - Added install-time attribution manifest generation.
 
-This project is not affiliated with or endorsed by Cheng-I Wu unless stated otherwise by the upstream author.
+This project is not affiliated with or endorsed by the upstream author unless stated otherwise by the upstream author.
