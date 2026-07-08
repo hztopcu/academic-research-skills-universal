@@ -149,19 +149,10 @@ There are two support levels:
 
 Many platforms start at portable support. Full orchestration should be added platform by platform, with tests.
 
-## Attribution
-
-This project is based on:
-
-- Academic Research Skills
-- Author: Cheng-I Wu
-- Repository: <https://github.com/Imbad0202/academic-research-skills>
-- License: CC BY-NC 4.0
-
-See [NOTICE.md](NOTICE.md) for attribution and modification notes.
-
 ## License
 
 The upstream Academic Research Skills content is licensed under CC BY-NC 4.0. This adapter distribution preserves that license. Do not use it for commercial purposes unless you have appropriate permission from the upstream rights holder.
+
+See [NOTICE.md](NOTICE.md) for attribution and modification notes.
 
 Creative Commons licenses are not software licenses in the usual package-manager sense, and the NonCommercial restriction can be interpreted differently across contexts. If you need commercial use, redistribution inside a paid product, marketplace publication, or institutional deployment, get permission from the upstream rights holder first.
