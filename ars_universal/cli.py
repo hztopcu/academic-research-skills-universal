@@ -4,6 +4,7 @@ from argparse import ArgumentParser
 from pathlib import Path
 import sys
 
+from .diagnostics import diagnose_install
 from .installers import install, verify_install
 from .platforms import PLATFORMS, resolve_platform
 
@@ -11,7 +12,7 @@ from .platforms import PLATFORMS, resolve_platform
 def build_parser() -> ArgumentParser:
     parser = ArgumentParser(prog="ars", description="Install Academic Research Skills on multiple agent platforms.")
     parser.add_argument("platform", nargs="?", help="Platform key, such as claude, codex, cursor, aider, gemini.")
-    parser.add_argument("action", nargs="?", default="install", help="Action to run: install or verify.")
+    parser.add_argument("action", nargs="?", default="install", help="Action to run: install, verify, or diagnose.")
     parser.add_argument("--platform", dest="platform_flag", help="Alternative platform selector, e.g. ars install --platform kimi.")
     parser.add_argument("--target", type=Path, help="Override the install target directory.")
     parser.add_argument("--dry-run", action="store_true", help="Print planned writes without changing files.")
@@ -45,14 +46,28 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         target = (args.target or platform.default_target()).expanduser().resolve()
         print(f"Verification OK for {platform.label} at {target}")
+    elif action == "diagnose":
+        diagnosis = diagnose_install(platform, target=args.target)
+        print(f"Platform: {platform.label} ({platform.key})")
+        print(f"Status: {platform.status}")
+        print(f"Adapter: {diagnosis.adapter}")
+        print(f"Target: {diagnosis.target}")
+        print(f"Verification: {'OK' if diagnosis.ok else 'FAILED'}")
+        if diagnosis.manifest:
+            print(f"Manifest install kind: {diagnosis.manifest.get('install_kind')}")
+        for warning in diagnosis.warnings:
+            print(f"Warning: {warning}")
+        for error in diagnosis.errors:
+            print(f"Error: {error}")
+        return 0 if diagnosis.ok else 1
     else:
-        raise SystemExit(f"Unknown action '{action}'. Currently supported: install, verify")
+        raise SystemExit(f"Unknown action '{action}'. Currently supported: install, verify, diagnose")
     return 0
 
 
 def normalize_invocation(platform: str | None, action: str, platform_flag: str | None) -> tuple[str, str]:
     if platform_flag:
-        if platform and platform not in {"install", "verify"}:
+        if platform and platform not in {"install", "verify", "diagnose"}:
             raise SystemExit("Use either 'ars <platform> install' or 'ars install --platform <platform>', not both.")
         return platform_flag, platform or "install"
 

@@ -6,8 +6,10 @@ Academic Research Skills Universal is a thin adapter layer around the upstream s
 
 - `ars_universal/assets/` contains the bundled upstream skill packages and support files.
 - `ars_universal/platforms.py` is the platform registry. It defines platform keys, aliases, default install locations, install kind, and support status.
-- `ars_universal/installers.py` materializes platform-specific layouts and verifies the result.
-- `ars_universal/cli.py` exposes `ars <platform> install`, `ars <platform> verify`, and `ars --list`.
+- `ars_universal/adapters.py` contains adapter classes that materialize and verify platform-specific layouts.
+- `ars_universal/installers.py` is a compatibility facade for the public installer API.
+- `ars_universal/diagnostics.py` produces install health reports for `ars <platform> diagnose`.
+- `ars_universal/cli.py` exposes `ars <platform> install`, `ars <platform> verify`, `ars <platform> diagnose`, and `ars --list`.
 - `tools/smoke_all_platforms.py` installs and verifies the stable or full platform matrix.
 - `tests/` covers CLI behavior, installer behavior, and package integrity.
 
@@ -19,8 +21,12 @@ Academic Research Skills Universal is a thin adapter layer around the upstream s
 - `vscode-instructions`: installs a portable bundle plus Copilot instructions.
 - `portable-bundle`: installs neutral Markdown skill packages for platforms still under testing.
 
+## Diagnostics
+
+`ars <platform> diagnose` reports the resolved target, support level, adapter class, manifest install kind, warnings, and verification errors. This gives users a single debugging command instead of making them infer which layout a platform uses.
+
 ## Design Notes
 
-The project borrows a useful product idea from `binary-husky/gpt_academic`: keep the system modular and backend-aware. In this repository that means a platform registry, clear support levels, repeatable smoke tests, and docs for each adapter path.
+The project borrows a useful product idea from `binary-husky/gpt_academic`: keep the system modular and backend-aware. In this repository that means a platform registry, adapter classes, clear support levels, repeatable smoke tests, diagnostics, and docs for each adapter path.
 
 No code is copied from `gpt_academic`; the transferable idea is architectural discipline: plugins/adapters should be discoverable, testable, and documented.

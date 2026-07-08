@@ -13,6 +13,7 @@ Early adapter scaffold. Treat platform support as installer support unless a pla
 Implemented:
 
 - Shared CLI: `ars <platform> install`
+- Diagnostics CLI: `ars <platform> diagnose`
 - Platform registry entries for Claude Code, Codex, Cursor, Aider, Gemini CLI, OpenCode, CodeBuddy, Kilo Code, Copilot, VS Code Copilot Chat, OpenClaw, Factory Droid, Trae, Trae CN, Hermes, Kimi Code, Amp, Agent Skills, Kiro, Pi, Devin, and Google Antigravity
 - Codex bundled skill adapter
 - Claude multi-skill adapter
@@ -60,6 +61,7 @@ Do not describe a platform as "fully supported" until it has a platform-specific
 python -m ars_universal.cli --list
 python -m ars_universal.cli codex install
 python -m ars_universal.cli codex verify
+python -m ars_universal.cli codex diagnose
 python -m ars_universal.cli claude install
 python -m ars_universal.cli cursor install
 python -m ars_universal.cli install --platform kimi

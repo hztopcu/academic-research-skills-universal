@@ -6,7 +6,8 @@ import unittest
 from pathlib import Path
 
 from ars_universal.cli import normalize_invocation
-from ars_universal.installers import install, verify_install
+from ars_universal.diagnostics import diagnose_install
+from ars_universal.installers import get_adapter, install, verify_install
 from ars_universal.platforms import SKILL_DIRS, resolve_platform
 
 
@@ -15,10 +16,20 @@ class InstallerTests(unittest.TestCase):
         platform = resolve_platform("skills")
         self.assertEqual(platform.key, "agents")
 
+    def test_resolves_adapter_class(self) -> None:
+        self.assertEqual(get_adapter(resolve_platform("codex")).__class__.__name__, "CodexBundleAdapter")
+        self.assertEqual(get_adapter(resolve_platform("claude")).__class__.__name__, "MultiSkillAdapter")
+
     def test_normalizes_platform_flag_invocation(self) -> None:
         self.assertEqual(
             normalize_invocation("install", "install", "kimi"),
             ("kimi", "install"),
+        )
+
+    def test_normalizes_diagnose_platform_flag_invocation(self) -> None:
+        self.assertEqual(
+            normalize_invocation("diagnose", "install", "kimi"),
+            ("kimi", "diagnose"),
         )
 
     def test_rejects_ambiguous_platform_flag_invocation(self) -> None:
@@ -83,6 +94,15 @@ class InstallerTests(unittest.TestCase):
             self.assertEqual(mapping["ars-reviewer"]["recommended_skill"], "academic-paper-reviewer")
             self.assertEqual(mapping["ars-full"]["recommended_skill"], "academic-pipeline")
             self.assertEqual(mapping["ars-lit-review"]["recommended_skill"], "deep-research")
+
+    def test_diagnose_reports_adapter(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp)
+            install(resolve_platform("cursor"), target=target)
+            diagnosis = diagnose_install(resolve_platform("cursor"), target=target)
+            self.assertTrue(diagnosis.ok)
+            self.assertEqual(diagnosis.adapter, "CursorRulesAdapter")
+            self.assertEqual(diagnosis.manifest["adapter"], "CursorRulesAdapter")
 
 
 if __name__ == "__main__":

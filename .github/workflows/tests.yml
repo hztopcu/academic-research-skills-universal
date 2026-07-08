@@ -34,6 +34,11 @@ jobs:
       - name: CLI list
         run: python -m ars_universal.cli --list
 
+      - name: CLI diagnose
+        run: |
+          python -m ars_universal.cli codex install --target tmp-install/ci-codex
+          python -m ars_universal.cli codex diagnose --target tmp-install/ci-codex
+
       - name: Stable platform smoke
         run: python tools/smoke_all_platforms.py --stable-only
 

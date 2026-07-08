@@ -49,6 +49,16 @@ class CliTests(unittest.TestCase):
             verify = self.run_cli("verify", "--platform", "kimi", "--target", tmp)
             self.assertEqual(verify.returncode, 0, verify.stderr)
 
+    def test_diagnose_action(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            install = self.run_cli("codex", "install", "--target", tmp)
+            self.assertEqual(install.returncode, 0, install.stderr)
+
+            result = self.run_cli("codex", "diagnose", "--target", tmp)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("Adapter: CodexBundleAdapter", result.stdout)
+            self.assertIn("Verification: OK", result.stdout)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -6,6 +6,7 @@ Run from a checkout:
 python -m ars_universal.cli --list
 python -m ars_universal.cli codex install
 python -m ars_universal.cli codex verify
+python -m ars_universal.cli codex diagnose
 ```
 
 Install for development:
@@ -14,6 +15,7 @@ Install for development:
 python -m pip install -e .
 ars codex install
 ars codex verify
+ars codex diagnose
 ```
 
 Install into a project-local target:
@@ -21,6 +23,7 @@ Install into a project-local target:
 ```bash
 ars codex install --target ./.codex/skills
 ars codex verify --target ./.codex/skills
+ars codex diagnose --target ./.codex/skills
 ars agents install --target ./agent-skills/academic-research-skills
 ```
 
