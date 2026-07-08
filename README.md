@@ -2,9 +2,9 @@
 
 [![Tests](https://github.com/hztopcu/academic-research-skills-universal/actions/workflows/tests.yml/badge.svg)](https://github.com/hztopcu/academic-research-skills-universal/actions/workflows/tests.yml)
 
-Unofficial cross-platform installer and adapter layer for [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills).
+Academic Research Skills Universal is a cross-platform installer, adapter architecture, and validation suite for academic research workflows across coding-agent platforms.
 
-This project is based on and extends the upstream Academic Research Skills project. The goal is to make the research, writing, peer-review, and publication pipeline easier to install across more coding-agent platforms while preserving upstream attribution, methodology, and license terms.
+It packages research, writing, peer-review, and publication-pipeline skills for Codex, Claude Code, VS Code, Cursor, Aider, and other agent environments. Upstream attribution and license details are recorded in [NOTICE.md](NOTICE.md).
 
 This repository is not affiliated with, endorsed by, or maintained by the upstream author or by any platform vendor named below.
 
