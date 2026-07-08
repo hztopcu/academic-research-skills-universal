@@ -25,8 +25,3 @@ Academic Research Skills Universal is a thin adapter layer around the upstream s
 
 `ars <platform> diagnose` reports the resolved target, support level, adapter class, manifest install kind, warnings, and verification errors. This gives users a single debugging command instead of making them infer which layout a platform uses.
 
-## Design Notes
-
-The project borrows a useful product idea from `binary-husky/gpt_academic`: keep the system modular and backend-aware. In this repository that means a platform registry, adapter classes, clear support levels, repeatable smoke tests, diagnostics, and docs for each adapter path.
-
-No code is copied from `gpt_academic`; the transferable idea is architectural discipline: plugins/adapters should be discoverable, testable, and documented.
