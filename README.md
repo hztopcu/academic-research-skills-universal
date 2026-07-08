@@ -1,17 +1,19 @@
 # Academic Research Skills Universal
 
-Cross-platform installer and adapter layer for [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills).
+Unofficial cross-platform installer and adapter layer for [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills).
 
-This project is based on and extends Academic Research Skills by Cheng-I Wu. The goal is to make the research, writing, peer-review, and publication pipeline usable across more coding-agent platforms while preserving upstream attribution, methodology, and license terms.
+This project is based on and extends Academic Research Skills by Cheng-I Wu. The goal is to make the research, writing, peer-review, and publication pipeline easier to install across more coding-agent platforms while preserving upstream attribution, methodology, and license terms.
+
+This repository is not affiliated with, endorsed by, or maintained by the upstream author or by any platform vendor named below.
 
 ## Status
 
-Early adapter scaffold.
+Early adapter scaffold. Treat platform support as installer support unless a platform is explicitly marked as end-to-end tested.
 
 Implemented:
 
 - Shared CLI: `ars <platform> install`
-- Platform registry for Claude Code, Codex, Cursor, Aider, Gemini CLI, OpenCode, CodeBuddy, Kilo Code, Copilot, VS Code Copilot Chat, OpenClaw, Factory Droid, Trae, Trae CN, Hermes, Kimi Code, Amp, Agent Skills, Kiro, Pi, Devin, and Google Antigravity
+- Platform registry entries for Claude Code, Codex, Cursor, Aider, Gemini CLI, OpenCode, CodeBuddy, Kilo Code, Copilot, VS Code Copilot Chat, OpenClaw, Factory Droid, Trae, Trae CN, Hermes, Kimi Code, Amp, Agent Skills, Kiro, Pi, Devin, and Google Antigravity
 - Codex bundled skill adapter
 - Claude multi-skill adapter
 - Cursor and VS Code instruction adapters
@@ -22,8 +24,26 @@ Not yet guaranteed:
 
 - Full subagent orchestration parity on every platform
 - Platform-native marketplace publishing
-- pipx/PyPI package-data hardening
 - End-to-end tests inside every target agent
+
+## Support Matrix
+
+| Level | Meaning |
+| --- | --- |
+| Tested adapter | Installer output is covered by automated tests in this repo. |
+| Portable bundle | Installs the skill files and routing notes, but native platform behavior still needs real-world validation. |
+| Planned native adapter | Registry entry exists; deeper platform-native integration should be added before claiming full support. |
+
+| Platform | Current level |
+| --- | --- |
+| Codex | Tested adapter |
+| Claude Code | Tested adapter |
+| Agent Skills | Tested through portable bundle path |
+| Cursor | Portable bundle + rule file |
+| VS Code Copilot Chat | Portable bundle + instruction file |
+| Aider, Gemini CLI, OpenCode, CodeBuddy, Kilo Code, Copilot CLI, OpenClaw, Factory Droid, Trae, Trae CN, Hermes, Kimi Code, Amp, Kiro, Pi, Devin, Google Antigravity | Portable bundle |
+
+Do not describe a platform as "fully supported" until it has a platform-specific adapter and an end-to-end manual test in that environment.
 
 ## Install From This Repository
 
@@ -124,3 +144,5 @@ See [NOTICE.md](NOTICE.md) for attribution and modification notes.
 ## License
 
 The upstream Academic Research Skills content is licensed under CC BY-NC 4.0. This adapter distribution preserves that license. Do not use it for commercial purposes unless you have appropriate permission from the upstream rights holder.
+
+Creative Commons licenses are not software licenses in the usual package-manager sense, and the NonCommercial restriction can be interpreted differently across contexts. If you need commercial use, redistribution inside a paid product, marketplace publication, or institutional deployment, get permission from the upstream rights holder first.
